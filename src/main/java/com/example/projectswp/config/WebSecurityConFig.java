@@ -25,7 +25,10 @@ public class WebSecurityConFig extends WebSecurityConfigurerAdapter {
             "/v3/api-docs/**",
             "/swagger-ui/**",
             "/v2/api-docs/**",
-            "/swagger-resources/**"};
+            "/swagger-resources/**",
+            "/swagger-ui/**",
+            "/webjars/**",
+            "/swagger-ui.html"};
     @Autowired
     private AuthorizationFilter authorizationFilter;
 

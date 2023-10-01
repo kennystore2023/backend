@@ -7,6 +7,7 @@ import com.example.projectswp.model.cart.Cart;
 import com.example.projectswp.model.cart.CartAndCartItem;
 import com.example.projectswp.model.cart.CartAndCartItemAndBook;
 import com.example.projectswp.model.cart.CartItems;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.projectswp.repository.CartItemsRepository.getCartItemsByCartId;
-
+@Repository
 public class CartRepository {
     public static List<Cart> getAllCart() throws Exception {
         List<Cart> cartList = new ArrayList<>();
