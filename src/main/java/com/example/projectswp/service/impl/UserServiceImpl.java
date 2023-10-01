@@ -23,6 +23,15 @@ public class UserServiceImpl implements UserService{
     CartRepository cartRepository;
 
     @Override
+    public User getUser(String uid) {
+        try {
+            return userRepository.getUserByUserUid(uid);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public User getUserById(int userId){
         try{
             return userRepository.getUserByUserId(userId);

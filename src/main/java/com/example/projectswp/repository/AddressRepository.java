@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Repository
 public class AddressRepository {
-    public static List<Address> getAllAddress() throws Exception {
+    public  List<Address> getAllAddress() throws Exception {
         List<Address> addressList = new ArrayList<>();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -35,7 +35,7 @@ public class AddressRepository {
         return addressList;
     }
 
-    public static Address getAddressById(int addressId) throws Exception {
+    public Address getAddressById(int addressId) throws Exception {
         Address address = new Address();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -61,7 +61,7 @@ public class AddressRepository {
     }
 
     //Create new Category
-    public static boolean createAddress(Address address) throws Exception {
+    public  boolean createAddress(Address address) throws Exception {
         try {
             Connection cn = DBUtils.makeConnection();
             if (cn != null) {
@@ -83,7 +83,7 @@ public class AddressRepository {
     }
 
     //Update Category
-    public static boolean updateAddress(Address address) throws Exception {
+    public boolean updateAddress(Address address) throws Exception {
         try {
             Connection cn = DBUtils.makeConnection();
             if (cn != null) {
@@ -105,7 +105,7 @@ public class AddressRepository {
         return false;
     }
 
-    public static  List<Address> getAddressByUserId(int userId) throws Exception {
+    public   List<Address> getAddressByUserId(int userId) throws Exception {
         List<Address> addressList = new ArrayList<>();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -133,7 +133,7 @@ public class AddressRepository {
     }
 
     //Delete Category
-    public static boolean deleteAddress(int[] addressId) throws Exception {
+    public  boolean deleteAddress(int[] addressId) throws Exception {
         int userId = getAddressById(addressId[0]).getUserId();
         List<Address> addressList = getAddressByUserId(userId);
         try {
@@ -157,7 +157,7 @@ public class AddressRepository {
         return false;
     }
 
-    public static Address latestAddress(String addressStr) throws Exception {
+    public List<Address> getAddressByUserUid(String userUid) throws Exception {
         Address address = new Address();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -176,13 +176,13 @@ public class AddressRepository {
                     }
                 }
             }
-        }catch (SQLException e){
+        } catch (SQLException e){
             e.printStackTrace();
         }
         return address;
     }
 
-    public static  List<Address> getAddressByUserUid(String userUid) throws Exception {
+    public List<Address> getAddressByUserUid(String userUid) throws Exception {
         List<Address> addressList = new ArrayList<>();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -203,13 +203,13 @@ public class AddressRepository {
                     }
                 }
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return addressList;
     }
 
-    public static  Address getAddressByUserIdAndAddress(int userId, String txrAddress) throws Exception {
+    public Address getAddressByUserIdAndAddress(int userId, String txrAddress) throws Exception {
         Address address = new Address();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -229,7 +229,7 @@ public class AddressRepository {
                     }
                 }
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return address;

@@ -15,7 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 @Repository
 public class BookRepository {
-    public static List<Book> getBook(String sql) throws Exception {
+    public  List<Book> getBook(String sql) throws Exception {
         List<Book> bookList = new ArrayList<>();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -47,20 +47,20 @@ public class BookRepository {
     }
 
     //Get all book
-    public static List<Book> getAllBook() throws Exception {
+    public  List<Book> getAllBook() throws Exception {
         List<Book> bookList = getBook("select * from dbo.Book");
         return bookList;
     }
 
     //Chuyển tiếng Việt ko dấu
-    public static String unAccent(String s) {
+    public  String unAccent(String s) {
         String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
         Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
         return pattern.matcher(temp).replaceAll("").replaceAll("Đ", "D").replace("đ", "d");
     }
 
     //Search book by it's name
-    public static List<Book> searchByName(String searchValue) throws Exception {
+    public  List<Book> searchByName(String searchValue) throws Exception {
         /*String sql = "select * from dbo.Product where productName like N'%" + searchValue + "%'";
         List<Book> bookList  = getBook(sql);
         return bookList;*/
@@ -79,13 +79,13 @@ public class BookRepository {
     }
 
     //Filter book by id
-    public static Book getBookById(int bookId) throws Exception {
+    public  Book getBookById(int bookId) throws Exception {
         String sql = "select * from dbo.Book where bookId = '" + bookId + "'";
         Book book = getBook(sql).get(0);
         return book;
     }
 
-    public static int getGenreId(String genreName) throws Exception {
+    public  int getGenreId(String genreName) throws Exception {
         List<Book> bookList = new ArrayList<>();
         int genreId = 0;
         try {
@@ -108,7 +108,7 @@ public class BookRepository {
     }
 
     //Multiple filter
-    public static List<Book> multiFilter(String genreName, String price, String status) throws Exception {
+    public  List<Book> multiFilter(String genreName, String price, String status) throws Exception {
         int genreId = getGenreId(genreName);
 
         String sql = "Select * from dbo.Book where";
@@ -142,7 +142,7 @@ public class BookRepository {
 
     //Filter product by it's genre
     //Đã tích hợp trong multiFilter
-    public static List<Book> filterByGenreId(int genreId) throws Exception {
+    public  List<Book> filterByGenreId(int genreId) throws Exception {
         String sql = "select * from dbo.Book where genreId = " + genreId;
         List<Book> bookList = getBook(sql);
         return bookList;
@@ -150,7 +150,7 @@ public class BookRepository {
 
     //Filter book by price from x to y
     //Đã tích hợp trong multiFilter
-    public static List<Book> sortByPrice(int from, int to) throws Exception {
+    public  List<Book> sortByPrice(int from, int to) throws Exception {
         String sql = "Select * from dbo.Book where price >= " + from + " and price <= " + to;
         List<Book> bookList = getBook(sql);
         return bookList;
@@ -158,14 +158,14 @@ public class BookRepository {
 
     //Filter book by status
     //Đã tích hợp trong multiFilter
-    public static List<Book> filterByStatus(String status) throws Exception {
+    public  List<Book> filterByStatus(String status) throws Exception {
         String sql = "Select * from dbo.Book where status = N'" + status + "'";
         List<Book> bookList = getBook(sql);
         return bookList;
     }
 
     //Add new book
-    public static boolean createBook(Book book) throws Exception {
+    public  boolean createBook(Book book) throws Exception {
         String dateCreate = DBUtils.getCurrentDate();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -197,7 +197,7 @@ public class BookRepository {
     }
 
     //Delete existing book by id
-    public static boolean deleteBook(int[] bookId) throws Exception {
+    public  boolean deleteBook(int[] bookId) throws Exception {
         String sql = "Delete from dbo.Book where bookId = ?";
         try {
             Connection cn = DBUtils.makeConnection();
@@ -218,7 +218,7 @@ public class BookRepository {
     }
 
     //Delete book by changing book status to "xóa"
-    public static boolean deleteBookByChangingStatus(int[] bookId) throws Exception {
+    public  boolean deleteBookByChangingStatus(int[] bookId) throws Exception {
         String sql = "Update dbo.Book set status = N'xóa' where bookId = ?";
         try {
             Connection cn = DBUtils.makeConnection();
@@ -239,7 +239,7 @@ public class BookRepository {
     }
 
     //Update existing book by id
-    public static boolean updateBook(Book book) throws Exception {
+    public  boolean updateBook(Book book) throws Exception {
         String dateUpdate = DBUtils.getCurrentDate();
         try {
             String status = book.getStatus();
@@ -270,7 +270,7 @@ public class BookRepository {
         return false;
     }
 
-    public static String[] getBookName() throws Exception {
+    public  String[] getBookName() throws Exception {
         String[] bookName = null;
         try {
             List<Book> bookList = getBook("select * from dbo.Book");

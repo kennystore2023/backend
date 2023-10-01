@@ -8,6 +8,7 @@ import com.example.projectswp.model.user.User;
 import java.util.List;
 
 public interface UserService {
+    User getUser(String uid);
     User getUserById(int userId);
     List<User> getAllUser();
     int getUserId(String userUid);
