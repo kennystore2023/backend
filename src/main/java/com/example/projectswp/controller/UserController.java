@@ -38,6 +38,7 @@ public class UserController {
             boolean result = userService.createUser(createUser);
             return result ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
         } catch (Exception e) {
+            System.out.println(e.toString());
             return ResponseEntity.badRequest().build();
         }
     }

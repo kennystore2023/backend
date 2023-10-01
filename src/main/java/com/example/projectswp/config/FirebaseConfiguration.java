@@ -26,7 +26,7 @@ public class FirebaseConfiguration {
     public void initializeFirebaseApp() throws IOException {
         FirebaseOptions options = FirebaseOptions.builder()
                 .setCredentials(GoogleCredentials.fromStream(resourceFile.getInputStream()))
-                .setServiceAccountId("firebase-adminsdk-jp0xb@sendmail-22317.iam.gserviceaccount.com")
+                .setServiceAccountId("firebase-adminsdk-oeh3k@bookstore-a2ba6.iam.gserviceaccount.com")
                 .build();
         FirebaseApp.initializeApp(options);
     }
