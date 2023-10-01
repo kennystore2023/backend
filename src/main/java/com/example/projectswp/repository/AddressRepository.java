@@ -157,7 +157,7 @@ public class AddressRepository {
         return false;
     }
 
-    public List<Address> getAddressByUserUid(String userUid) throws Exception {
+    public Address latestAddress(String addressStr) throws Exception {
         Address address = new Address();
         try {
             Connection cn = DBUtils.makeConnection();
