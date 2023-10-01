@@ -2,6 +2,7 @@ package com.example.projectswp.repository;
 
 import com.example.projectswp.dbConnection.DBUtils;
 import com.example.projectswp.model.User;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class UserRepository {
     public static List<User> getAllUser() throws Exception {
         List<User> userList = new ArrayList<>();

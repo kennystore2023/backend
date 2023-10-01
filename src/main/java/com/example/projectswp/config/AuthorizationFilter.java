@@ -1,6 +1,6 @@
 package com.example.projectswp.config;
 
-import com.example.projectswp.repositories.UserAccountRepository;
+import com.example.projectswp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,13 +20,13 @@ import java.util.List;
 @Component
 public class AuthorizationFilter extends OncePerRequestFilter {
     @Autowired
-    UserAccountRepository userAccountRepository;
+    UserService userService;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null) {
             List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-            int role = userAccountRepository.getUserAccountRole(authentication.getPrincipal().toString());
+            int role = userService.getUserRoleByUid(authentication.getPrincipal().toString()); // param: userUid
                 if (role == 1) {
                     authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
                 } else if (role == 2){
