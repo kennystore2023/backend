@@ -2,6 +2,7 @@ package com.example.projectswp.controller;
 
 import com.example.projectswp.model.user.CreateUser;
 import com.example.projectswp.model.user.User;
+import com.example.projectswp.repository.util.Util;
 import com.example.projectswp.service.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,12 +22,25 @@ public class UserController {
     @Autowired
     UserServiceImpl userService;
 
-    @GetMapping("/getUser")
+    @GetMapping("getUser")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public ResponseEntity<User> getUser() {
+        try {
+            String uid = Util.getUserUid();
+            User user = userService.getUser(uid);
+            return user.getUserId() == 0 ? ResponseEntity.notFound().build() : ResponseEntity.ok(user);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+
+    @GetMapping("/getAllUser")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<User>> getUser() {
+    public ResponseEntity<List<User>> getAllUser() {
         try {
             List<User> userList = userService.getAllUser();
-            return userList.isEmpty() ? ResponseEntity.ok(userList) : ResponseEntity.notFound().build();
+            return !userList.isEmpty() ? ResponseEntity.ok(userList) : ResponseEntity.notFound().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
@@ -54,7 +68,8 @@ public class UserController {
         }
     }
 
-    /*@GetMapping("/user")
+    /*
+    @GetMapping("/user")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<User> getAccountToken() {
         int uid = Ultil.getUserId();

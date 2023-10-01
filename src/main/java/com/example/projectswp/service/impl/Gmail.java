@@ -35,27 +35,27 @@ public class Gmail {
     /**
      * Application name.
      */
-    private static final String APPLICATION_NAME = "Gmail API";
+    private  final String APPLICATION_NAME = "Gmail API";
     /**
      * Global instance of the JSON factory.
      */
-    private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
+    private  final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
     /**
      * Directory to store authorization tokens for this application.
      */
-    private static final String TOKENS_DIRECTORY_PATH = "token";
+    private  final String TOKENS_DIRECTORY_PATH = "token";
 
-    private static final List<String> SCOPES = Collections.singletonList(GmailScopes.GMAIL_SEND);
-    private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
+    private  final List<String> SCOPES = Collections.singletonList(GmailScopes.GMAIL_SEND);
+    private  final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
-    private static com.google.api.services.gmail.Gmail service = null;
+    private  com.google.api.services.gmail.Gmail service = null;
     public Gmail() throws IOException, GeneralSecurityException {
             final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
             service = new com.google.api.services.gmail.Gmail.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                     .setApplicationName(APPLICATION_NAME)
                     .build();
         }
-    private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
+    private  Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
             throws IOException {
         // Load client secrets.
         InputStream in = Gmail.class.getResourceAsStream(CREDENTIALS_FILE_PATH);

@@ -16,10 +16,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.projectswp.repository.CartItemsRepository.getCartItemsByCartId;
+import  com.example.projectswp.repository.CartItemsRepository.getCartItemsByCartId;
 @Repository
 public class CartRepository {
-    public static List<Cart> getAllCart() throws Exception {
+    public  List<Cart> getAllCart() throws Exception {
         List<Cart> cartList = new ArrayList<>();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -42,7 +42,7 @@ public class CartRepository {
         return cartList;
     }
 
-    public static Cart getCartByCartId(int cartId) throws Exception {
+    public  Cart getCartByCartId(int cartId) throws Exception {
         Cart cart = new Cart();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -64,7 +64,7 @@ public class CartRepository {
         return cart;
     }
 
-    public static Cart getCartByUserId(int userId) throws Exception {
+    public  Cart getCartByUserId(int userId) throws Exception {
         Cart cart = new Cart();
         try{
             Connection cn = DBUtils.makeConnection();
@@ -87,7 +87,7 @@ public class CartRepository {
         return null;
     }
 
-    public static Cart getCartByUserUid(String userUid) throws Exception {
+    public  Cart getCartByUserUid(String userUid) throws Exception {
         Cart cart = null;
         try {
             Connection cn = DBUtils.makeConnection();
@@ -108,7 +108,7 @@ public class CartRepository {
     }
 
     //Create a new cart
-    public static boolean createCart(Cart cart) throws Exception {
+    public  boolean createCart(Cart cart) throws Exception {
         try {
             Connection cn = DBUtils.makeConnection();
             if (cn != null) {
@@ -129,7 +129,7 @@ public class CartRepository {
     }
 
     //Delete Cart
-    public static boolean deleteCart(int[] cartId) throws Exception {
+    public  boolean deleteCart(int[] cartId) throws Exception {
         try {
             Connection cn = DBUtils.makeConnection();
             int count = 0;
@@ -149,7 +149,7 @@ public class CartRepository {
         return false;
     }
 
-    public static List<CartAndCartItem> getCartAndCartItem() throws Exception {
+    public  List<CartAndCartItem> getCartAndCartItem() throws Exception {
         List<Cart> cartList = getAllCart();
         List<CartAndCartItem> cartAndCartItemList = new ArrayList<>();
         for(int i = 0; i < cartList.size(); i++){
@@ -162,7 +162,7 @@ public class CartRepository {
         return cartAndCartItemList;
     }
 
-    public static List<BookAndCartItem> getProductAndCartItem(int cartId) throws Exception {
+    public  List<BookAndCartItem> getProductAndCartItem(int cartId) throws Exception {
         List<BookAndCartItem> productAndCartItemList = new ArrayList<>();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -204,7 +204,7 @@ public class CartRepository {
         return productAndCartItemList;
     }
 
-    public static CartAndCartItemAndBook getCartBookByUserUid(String userUid) throws Exception {
+    public  CartAndCartItemAndBook getCartBookByUserUid(String userUid) throws Exception {
         Cart cart = getCartByUserUid(userUid);
         CartAndCartItemAndBook cartAndCartItemAndProduct = new CartAndCartItemAndBook();
         List<BookAndCartItem> bookAndCartItemList= getProductAndCartItem(cart.getCartId());

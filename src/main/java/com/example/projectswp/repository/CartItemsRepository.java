@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Repository
 public class CartItemsRepository {
-    public static List<CartItems> getAllCartItems() throws Exception {
+    public  List<CartItems> getAllCartItems() throws Exception {
         List<CartItems> cartItemsList = new ArrayList<>();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -38,7 +38,7 @@ public class CartItemsRepository {
         return cartItemsList;
     }
 
-    public static CartItems getCartItemsById(int cartItemId) throws Exception {
+    public  CartItems getCartItemsById(int cartItemId) throws Exception {
         CartItems cartItems = new CartItems();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -62,7 +62,7 @@ public class CartItemsRepository {
         return cartItems;
     }
 
-    public static List<CartItems> getCartItemsByCartId(int cartId) throws Exception {
+    public  List<CartItems> getCartItemsByCartId(int cartId) throws Exception {
         List<CartItems> cartItemsList = new ArrayList<>();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -89,7 +89,7 @@ public class CartItemsRepository {
     }
 
     //Create cartItems
-    public static boolean createCartItems(CartItems cartItem) throws Exception {
+    public  boolean createCartItems(CartItems cartItem) throws Exception {
         try {
             Connection cn = DBUtils.makeConnection();
             if (cn != null) {
@@ -118,7 +118,7 @@ public class CartItemsRepository {
     }
 
     //Update cartItems
-    public static boolean updateCartItems(CartItems cartItem) throws Exception {
+    public  boolean updateCartItems(CartItems cartItem) throws Exception {
         try {
             Connection cn = DBUtils.makeConnection();
             if (cn != null) {
@@ -138,7 +138,7 @@ public class CartItemsRepository {
     }
 
     //Delete cartItems
-    public static boolean deleteCartItem(int[] cartItemId) throws Exception {
+    public  boolean deleteCartItem(int[] cartItemId) throws Exception {
         try {
             Connection cn = DBUtils.makeConnection();
             int count = 0;
@@ -158,7 +158,7 @@ public class CartItemsRepository {
         return false;
     }
 
-    public static int countCartItems(int cartId) throws Exception {
+    public  int countCartItems(int cartId) throws Exception {
         int count = 0;
         try {
             Connection cn = DBUtils.makeConnection();
@@ -178,7 +178,7 @@ public class CartItemsRepository {
         return count;
     }
 
-    public static CartItems getCartItemsByCartIdAndBookId(int cartId, int bookId) throws Exception {
+    public  CartItems getCartItemsByCartIdAndBookId(int cartId, int bookId) throws Exception {
         CartItems cartItems = new CartItems();
         try {
             Connection cn = DBUtils.makeConnection();

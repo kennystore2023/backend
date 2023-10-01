@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Repository
 public class UserRepository {
-    public static List<User> getAllUser() throws Exception {
+    public List<User> getAllUser() throws Exception {
         List<User> userList = new ArrayList<>();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -40,7 +40,7 @@ public class UserRepository {
         return userList;
     }
 
-    public static User getUserByUserId(int userId) throws Exception {
+    public User getUserByUserId(int userId) throws Exception {
         User user = new User();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -67,7 +67,7 @@ public class UserRepository {
         return user;
     }
 
-    public static User getUserByUserUid(String userUid) throws Exception {
+    public User getUserByUserUid(String userUid) throws Exception {
         User user = new User();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -88,13 +88,13 @@ public class UserRepository {
                     }
                 }
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return user;
     }
 
-    public static boolean createUser(User user) throws Exception {
+    public boolean createUser(User user) throws Exception {
         try {
             Connection cn = DBUtils.makeConnection();
             if (cn != null) {
@@ -115,7 +115,7 @@ public class UserRepository {
         return false;
     }
 
-    public static boolean updateUser(User user) throws Exception {
+    public boolean updateUser(User user) throws Exception {
         try {
             Connection cn = DBUtils.makeConnection();
             if (cn != null) {
@@ -136,7 +136,7 @@ public class UserRepository {
     }
 
 
-    public static boolean deleteUser(int[] userId) throws Exception {
+    public boolean deleteUser(int[] userId) throws Exception {
         try {
             Connection cn = DBUtils.makeConnection();
             int count = 0;
@@ -156,7 +156,7 @@ public class UserRepository {
         return false;
     }
 
-    public static User getUserByUsername(String username) throws Exception {
+    public User getUserByUsername(String username) throws Exception {
         User user = new User();
         try {
             Connection cn = DBUtils.makeConnection();

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Repository
 public class GenreRepository {
-    public static List<Genre> getAllGenre() throws Exception {
+    public  List<Genre> getAllGenre() throws Exception {
         List<Genre> genreList = new ArrayList<>();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -37,7 +37,7 @@ public class GenreRepository {
         return genreList;
     }
 
-    public static Genre getGenreById(int genreId) throws Exception {
+    public  Genre getGenreById(int genreId) throws Exception {
         Genre genre = new Genre();
         try {
             Connection cn = DBUtils.makeConnection();
@@ -60,7 +60,7 @@ public class GenreRepository {
     }
 
     //Create new Genre
-    public static boolean createGenre(Genre genre) throws Exception {
+    public  boolean createGenre(Genre genre) throws Exception {
         try {
             Connection cn = DBUtils.makeConnection();
             if (cn != null) {
@@ -77,7 +77,7 @@ public class GenreRepository {
     }
 
     //Update Genre
-    public static boolean updateGenre(Genre genre) throws Exception {
+    public  boolean updateGenre(Genre genre) throws Exception {
         try {
             Connection cn = DBUtils.makeConnection();
             if (cn != null) {
@@ -95,7 +95,7 @@ public class GenreRepository {
     }
 
     //Delete Genre
-    public static boolean deleteGenre(int[] genreId) throws Exception {
+    public  boolean deleteGenre(int[] genreId) throws Exception {
         try {
             Connection cn = DBUtils.makeConnection();
             int count = 0;
@@ -117,7 +117,7 @@ public class GenreRepository {
 
 
     //Get both Genre and Book
-    public static List<GenreAndBook> getGenreAndBook() throws Exception {
+    public  List<GenreAndBook> getGenreAndBook() throws Exception {
         List<GenreAndBook> genreAndBookList = new ArrayList<>();
         List<Genre> genreList = getAllGenre();
         try {
