@@ -1,6 +1,6 @@
 package com.example.projectswp.service;
 
-import com.example.projectswp.model.User;
+import com.example.projectswp.model.user.User;
 
 import java.util.List;
 

@@ -1,7 +1,6 @@
 package com.example.projectswp.controller;
 
-import com.example.projectswp.model.User;
-import com.example.projectswp.service.UserService;
+import com.example.projectswp.model.user.User;
 import com.example.projectswp.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

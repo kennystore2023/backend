@@ -1,4 +1,4 @@
-package com.example.projectswp.model;
+package com.example.projectswp.model.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,10 +1,8 @@
 package com.example.projectswp.service.impl;
 
-import com.example.projectswp.model.User;
+import com.example.projectswp.model.user.User;
 import com.example.projectswp.repository.UserRepository;
 import com.example.projectswp.service.UserService;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.UserRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
