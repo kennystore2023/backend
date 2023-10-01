@@ -157,6 +157,31 @@ public class AddressRepository {
         return false;
     }
 
+    public static Address latestAddress(String addressStr) throws Exception {
+        Address address = new Address();
+        try {
+            Connection cn = DBUtils.makeConnection();
+            if (cn != null) {
+                String sql = "Select top 1 * from dbo.Address where address = N'?' order by addressId desc";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, addressStr);
+                ResultSet table = pst.executeQuery();
+                if (table != null) {
+                    while (table.next()) {
+                        address.setAddressId(table.getInt("addressId"));
+                        address.setUserId(table.getInt("userId"));
+                        address.setAddress(table.getString("address"));
+                        address.setDateCreate(table.getDate("dateCreate"));
+                        address.setDateUpdate(table.getDate("dateUpdate"));
+                    }
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return address;
+    }
+
     public static  List<Address> getAddressByUserUid(String userUid) throws Exception {
         List<Address> addressList = new ArrayList<>();
         try {
