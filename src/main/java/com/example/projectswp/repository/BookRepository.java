@@ -2,6 +2,7 @@ package com.example.projectswp.repository;
 
 import com.example.projectswp.dbConnection.DBUtils;
 import com.example.projectswp.model.book.Book;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+@Repository
 public class BookRepository {
     public static List<Book> getBook(String sql) throws Exception {
         List<Book> bookList = new ArrayList<>();

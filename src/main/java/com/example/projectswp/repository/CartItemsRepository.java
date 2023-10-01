@@ -3,6 +3,7 @@ package com.example.projectswp.repository;
 import com.example.projectswp.dbConnection.DBUtils;
 import com.example.projectswp.model.cart.CartItems;
 import com.example.projectswp.model.book.Book;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class CartItemsRepository {
     public static List<CartItems> getAllCartItems() throws Exception {
         List<CartItems> cartItemsList = new ArrayList<>();

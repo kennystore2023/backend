@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class AddressRepository {
     public static List<Address> getAllAddress() throws Exception {
         List<Address> addressList = new ArrayList<>();
@@ -62,7 +62,6 @@ public class AddressRepository {
 
     //Create new Category
     public static boolean createAddress(Address address) throws Exception {
-        Address category = new Address();
         try {
             Connection cn = DBUtils.makeConnection();
             if (cn != null) {

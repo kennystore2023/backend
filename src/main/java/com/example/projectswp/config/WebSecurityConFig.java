@@ -25,7 +25,10 @@ public class WebSecurityConFig extends WebSecurityConfigurerAdapter {
             "/v3/api-docs/**",
             "/swagger-ui/**",
             "/v2/api-docs/**",
-            "/swagger-resources/**"};
+            "/swagger-resources/**",
+            "/swagger-ui/**",
+            "/webjars/**",
+            "/swagger-ui.html"};
     @Autowired
     private AuthorizationFilter authorizationFilter;
 
@@ -33,8 +36,9 @@ public class WebSecurityConFig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.addFilterBefore(firebaseAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterAfter(authorizationFilter, UsernamePasswordAuthenticationFilter.class)
-                .authorizeRequests().antMatchers(HttpMethod.GET,"/api/item/**", "/api/category/**", "/api/subCategory/**", "/api/blog/**", "/api/category-sub/**", "/api/blogcategory/**", "/api/comment/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/login").permitAll()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/api/item/**", "/api/category/**", "/api/subCategory/**", "/api/blog/**", "/api/category-sub/**", "/api/blogcategory/**", "/api/comment/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/user/createUser").permitAll()
                 .antMatchers(AUTH_WHITE_LIST).permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
