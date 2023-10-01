@@ -62,7 +62,7 @@ public class CartItemsRepository {
         return cartItems;
     }
 
-    public  List<CartItems> getCartItemsByCartId(int cartId) throws Exception {
+    public List<CartItems> getCartItemsByCartId(int cartId) throws Exception {
         List<CartItems> cartItemsList = new ArrayList<>();
         try {
             Connection cn = DBUtils.makeConnection();

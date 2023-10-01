@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import  com.example.projectswp.repository.CartItemsRepository.getCartItemsByCartId;
+
 @Repository
 public class CartRepository {
     public  List<Cart> getAllCart() throws Exception {
@@ -198,7 +198,7 @@ public class CartRepository {
                     }
                 }
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return productAndCartItemList;
