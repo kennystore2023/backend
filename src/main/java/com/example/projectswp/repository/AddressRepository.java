@@ -2,6 +2,7 @@ package com.example.projectswp.repository;
 
 import com.example.projectswp.dbConnection.DBUtils;
 import com.example.projectswp.model.Address;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
