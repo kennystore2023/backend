@@ -68,6 +68,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean createUser(CreateUser newUser) {
         try{
+            System.out.println(newUser.toString());
             User user = new User(0, 0, newUser.getUserName(), newUser.getUserUid(), newUser.getEmail(), newUser.getPhoneNumber(), newUser.getAddress(), newUser.getNote());
             boolean createUser = userRepository.createUser(user);
 
