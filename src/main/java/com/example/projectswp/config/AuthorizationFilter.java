@@ -29,7 +29,7 @@ public class AuthorizationFilter extends OncePerRequestFilter {
             int role = userService.getUserRoleByUid(authentication.getPrincipal().toString()); // param: userUid
                 if (role == 1) {
                     authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-                } else if (role == 2){
+                } else if (role == 0){
                     authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
                 }
             Authentication updatedAuthentication = new UsernamePasswordAuthenticationToken(authentication.getPrincipal(), authentication.getCredentials(), authorities);

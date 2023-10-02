@@ -29,6 +29,7 @@ public class UserRepository {
                         user.setUserUid(table.getString("userUid"));
                         user.setEmail(table.getString("email"));
                         user.setPhoneNumber(table.getString("phoneNumber"));
+                        user.setAddress(table.getString("address"));
                         user.setNote(table.getString("note"));
                         userList.add(user);
                     }
@@ -57,6 +58,7 @@ public class UserRepository {
                         user.setUserUid(table.getString("userUid"));
                         user.setEmail(table.getString("email"));
                         user.setPhoneNumber(table.getString("phoneNumber"));
+                        user.setAddress(table.getString("address"));
                         user.setNote(table.getString("note"));
                     }
                 }
@@ -84,6 +86,7 @@ public class UserRepository {
                         user.setUserUid(table.getString("userUid"));
                         user.setEmail(table.getString("email"));
                         user.setPhoneNumber(table.getString("phoneNumber"));
+                        user.setAddress(table.getString("address"));
                         user.setNote(table.getString("note"));
                     }
                 }
@@ -98,14 +101,15 @@ public class UserRepository {
         try {
             Connection cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "INSERT INTO Users (userRole, userName, userUid, email, phoneNumber, note)"
-                        + "VALUES(0, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO Users (userRole, userName, userUid, email, phoneNumber, address, note)"
+                        + "VALUES(0, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, user.getUserName());
                 pst.setString(2, user.getUserUid());
                 pst.setString(3, user.getEmail());
                 pst.setString(4, user.getPhoneNumber());
-                pst.setString(5, user.getNote());
+                pst.setString(5, user.getAddress());
+                pst.setString(6, user.getNote());
                 int row = pst.executeUpdate();
                 if (row > 0) return true;
             }
@@ -115,17 +119,18 @@ public class UserRepository {
         return false;
     }
 
-    public boolean updateUser(User user) throws Exception {
+    public boolean updateUser(User user, int userId) throws Exception {
         try {
             Connection cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "update Users set userName = ?, email = ?, phoneNumber = ?, note = ? WHERE userId = ?";
+                String sql = "update Users set userName = ?, email = ?, phoneNumber = ?, address = ?, note = ? WHERE userId = ?";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, user.getUserName());
                 pst.setString(2, user.getEmail());
                 pst.setString(3, user.getPhoneNumber());
-                pst.setString(4, user.getNote());
-                pst.setInt(5, user.getUserId());
+                pst.setString(4, user.getAddress());
+                pst.setString(5, user.getNote());
+                pst.setInt(6, userId);
                 int row = pst.executeUpdate();
                 if (row > 0) return true;
             }
@@ -173,6 +178,7 @@ public class UserRepository {
                         user.setUserUid(table.getString("userUid"));
                         user.setEmail(table.getString("email"));
                         user.setPhoneNumber(table.getString("phoneNumber"));
+                        user.setAddress(table.getString("address"));
                         user.setNote(table.getString("note"));
                     }
                 }
