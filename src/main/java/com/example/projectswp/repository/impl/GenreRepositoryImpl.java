@@ -1,4 +1,4 @@
-package com.example.projectswp.repository;
+package com.example.projectswp.repository.impl;
 
 import com.example.projectswp.dbConnection.DBUtils;
 import com.example.projectswp.model.book.Book;
@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 @Repository
-public class GenreRepository {
+public class GenreRepositoryImpl {
     public  List<Genre> getAllGenre() throws Exception {
         List<Genre> genreList = new ArrayList<>();
         try {
