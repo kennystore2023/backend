@@ -201,7 +201,7 @@ public class CartRepository {
                     }
                 }
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return productAndCartItemList;
