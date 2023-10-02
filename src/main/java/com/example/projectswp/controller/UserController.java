@@ -59,9 +59,10 @@ public class UserController {
 
     @PostMapping("/updateUser")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    public ResponseEntity<List<User>> createUser(@RequestBody User user) {
+    public ResponseEntity<Object> updateUser(@RequestBody User user) {
         try {
-            boolean result = userService.updateUser(user);
+            int userId = Util.getUserId();
+            boolean result = userService.updateUser(user, userId);
             return result ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();

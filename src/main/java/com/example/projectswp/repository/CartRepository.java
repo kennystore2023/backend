@@ -19,6 +19,7 @@ import java.util.List;
 
 @Repository
 public class CartRepository {
+    /*
     public  List<Cart> getAllCart() throws Exception {
         List<Cart> cartList = new ArrayList<>();
         try {
@@ -106,6 +107,7 @@ public class CartRepository {
         }
         return cart;
     }
+    */
 
     //Create a new cart
     public  boolean createCart(Cart cart) throws Exception {
@@ -128,6 +130,7 @@ public class CartRepository {
         return false;
     }
 
+    /*
     //Delete Cart
     public  boolean deleteCart(int[] cartId) throws Exception {
         try {
@@ -212,6 +215,7 @@ public class CartRepository {
         cartAndCartItemAndProduct.setBookAndCartItemList(bookAndCartItemList);
         return new CartAndCartItemAndBook();
     }
-
+    */
 }
+
 
