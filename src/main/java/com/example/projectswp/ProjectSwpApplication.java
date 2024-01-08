@@ -1,5 +1,6 @@
 package com.example.projectswp;
 
+import com.example.projectswp.dbConnection.DBUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +12,7 @@ public class ProjectSwpApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectSwpApplication.class, args);
+
 	}
 
 }

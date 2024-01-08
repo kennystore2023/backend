@@ -68,12 +68,6 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<String> createUser(CreateUser newUser) {
         try{
-            List<String> check = userRepository.checkUser(newUser);
-            if(check.size()>0) return check;
-            else{
-                User user = new User(0, 0, newUser.getUserName(), newUser.getUserUid(), newUser.getEmail(), newUser.getPhoneNumber(), newUser.getAddress(), newUser.getNote());
-                boolean createUser = userRepository.createUser(user);
-
                 if(createUser) {
                     int userId = userRepository.getUserByUserUid(newUser.getUserUid()).getUserId();
                     System.out.print(userId);
