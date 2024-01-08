@@ -1,4 +1,4 @@
-package com.example.projectswp.repository;
+package com.example.projectswp.repository.impl;
 
 import com.example.projectswp.dbConnection.DBUtils;
 import com.example.projectswp.model.book.Book;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 @Repository
-public class BookRepository {
+public class BookRepositoryImpl {
     public  List<Book> getBook(String sql) throws Exception {
         List<Book> bookList = new ArrayList<>();
         try {

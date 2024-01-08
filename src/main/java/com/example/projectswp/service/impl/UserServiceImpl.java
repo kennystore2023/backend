@@ -66,25 +66,28 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean createUser(CreateUser newUser) {
+    public List<String> createUser(CreateUser newUser) {
         try{
-            System.out.println(newUser.toString());
-            User user = new User(0, 0, newUser.getUserName(), newUser.getUserUid(), newUser.getEmail(), newUser.getPhoneNumber(), newUser.getAddress(), newUser.getNote());
-            boolean createUser = userRepository.createUser(user);
-
-            if(createUser) {
-                int userId = userRepository.getUserByUserUid(newUser.getUserUid()).getUserId();
-                Cart cart = new Cart(0, userId);
-                boolean createCart = cartRepository.createCart(cart);
-                if (createCart) {
-                    return true;
-                } else {
-                    int[] id = {userId};
-                    userRepository.deleteUser(id);
-                    return false;
+                if(createUser) {
+                    int userId = userRepository.getUserByUserUid(newUser.getUserUid()).getUserId();
+                    System.out.print(userId);
+                    Cart cart = new Cart(0, userId);
+                    boolean createCart = cartRepository.createCart(cart);
+                    if (createCart) {
+                        check.add("Create successful");
+                        return check;
+                    } else {
+                        int[] id = {userId};
+                        userRepository.deleteUser(id);
+                        check.add("Create fail");
+                        return check;
+                    }
+                }
+                else {
+                    check.add("Create fail");
+                    return check;
                 }
             }
-            else return false;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

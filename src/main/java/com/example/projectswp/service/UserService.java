@@ -11,6 +11,7 @@ public interface UserService {
     List<User> getAllUser();
     int getUserId(String userUid);
     int getUserRoleByUid(String userUid);
-    boolean createUser(CreateUser user);
+    //String checkUser(CreateUser createUser);
+    List<String> createUser(CreateUser user);
     boolean updateUser(User user, int userId);
 }

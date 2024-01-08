@@ -49,8 +49,8 @@ public class UserController {
     @PostMapping("/createUser")
     public ResponseEntity<Object> createUser(@RequestBody CreateUser createUser) {
         try {
-            boolean result = userService.createUser(createUser);
-            return result ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+            List<String> result = userService.createUser(createUser);
+            return result.get(0).equals("Create successful") ? ResponseEntity.ok(result) : ResponseEntity.badRequest().body(result);
         } catch (Exception e) {
             System.out.println(e.toString());
             return ResponseEntity.badRequest().build();
